@@ -33,7 +33,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/[abc]\.tile\.openstreetmap\.org\/.*/i,
+            urlPattern: /\/tiles\/.*/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'osm-tiles',
@@ -53,6 +53,18 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
+    }
+  },
+  server: {
+    proxy: {
+      '/tiles': {
+        target: 'https://tile.openstreetmap.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/tiles/, ''),
+        headers: {
+          'User-Agent': 'Locatorblick/1.0 (https://locatorblick.oeradio.at)'
+        }
+      }
     }
   }
 })
