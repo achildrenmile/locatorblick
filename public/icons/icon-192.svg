@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" fill="none">
+  <rect width="192" height="192" rx="36" fill="#1e40af"/>
+  <path d="M96 24C65.07 24 40 49.07 40 80c0 42 56 88 56 88s56-46 56-88c0-30.93-25.07-56-56-56z" fill="#fff"/>
+  <circle cx="96" cy="80" r="24" fill="#1e40af"/>
+  <!-- Grid lines -->
+  <rect x="24" y="132" width="144" height="3" fill="#60a5fa" opacity="0.6"/>
+  <rect x="24" y="150" width="144" height="3" fill="#60a5fa" opacity="0.6"/>
+  <rect x="24" y="168" width="144" height="3" fill="#60a5fa" opacity="0.6"/>
+  <rect x="60" y="108" width="3" height="72" fill="#60a5fa" opacity="0.6"/>
+  <rect x="96" y="108" width="3" height="72" fill="#60a5fa" opacity="0.6"/>
+  <rect x="132" y="108" width="3" height="72" fill="#60a5fa" opacity="0.6"/>
+</svg>

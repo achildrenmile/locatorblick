@@ -1,0 +1,45 @@
+# Git
+.git
+.gitignore
+.claude
+
+# Documentation
+*.md
+LICENSE
+
+# Node modules (will be installed fresh in container)
+node_modules
+
+# Build output (will be built fresh in container)
+dist
+dev-dist
+
+# Development files
+.env*
+!.env.production.example
+
+# IDE/Editor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test files
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+__tests__
+coverage
+
+# Local scripts
+deploy-production.sh

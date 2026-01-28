@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="96" fill="#1e40af"/>
+  <path d="M256 64C173.31 64 106.67 130.64 106.67 213.33c0 112 149.33 234.67 149.33 234.67s149.33-122.67 149.33-234.67C405.33 130.64 338.69 64 256 64z" fill="#fff"/>
+  <circle cx="256" cy="213.33" r="64" fill="#1e40af"/>
+  <!-- Grid lines -->
+  <rect x="64" y="352" width="384" height="8" fill="#60a5fa" opacity="0.6"/>
+  <rect x="64" y="400" width="384" height="8" fill="#60a5fa" opacity="0.6"/>
+  <rect x="64" y="448" width="384" height="8" fill="#60a5fa" opacity="0.6"/>
+  <rect x="160" y="288" width="8" height="192" fill="#60a5fa" opacity="0.6"/>
+  <rect x="256" y="288" width="8" height="192" fill="#60a5fa" opacity="0.6"/>
+  <rect x="352" y="288" width="8" height="192" fill="#60a5fa" opacity="0.6"/>
+</svg>
