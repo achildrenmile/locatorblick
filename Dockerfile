@@ -24,8 +24,8 @@ RUN apk add --no-cache wget
 # Copy the built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy nginx configuration (complete nginx.conf with proxy settings)
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
