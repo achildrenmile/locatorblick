@@ -26,6 +26,7 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Copy nginx configuration (complete nginx.conf with proxy settings)
 COPY nginx.conf /etc/nginx/nginx.conf
+RUN rm -f /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
