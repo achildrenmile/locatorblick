@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { Card, Button } from '@/components/common'
-import { LocatorInput } from '@/components/converter'
+import { LocatorInput, LocatorParts } from '@/components/converter'
 import { de } from '@/i18n/de'
 import { useLocator, useFavorites } from '@/hooks'
 import { useAppContext } from '@/store'
@@ -93,6 +93,21 @@ export function QRBCalculator() {
 
         {result && (
           <div className="space-y-4 pt-4 border-t border-slate-200">
+            {/* Route Summary */}
+            <div className="flex items-center justify-center gap-4 py-2">
+              <div className="text-center">
+                <div className="text-xs text-slate-500 mb-1">Von</div>
+                <LocatorParts locator={result.from.locator} className="text-lg font-bold" />
+              </div>
+              <svg className="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+              <div className="text-center">
+                <div className="text-xs text-slate-500 mb-1">Nach</div>
+                <LocatorParts locator={result.to.locator} className="text-lg font-bold" />
+              </div>
+            </div>
+
             {/* Kurzweg */}
             <div className="p-4 bg-primary-50 rounded-lg">
               <h4 className="font-semibold text-primary-900 mb-3">{de.calculator.shortPath}</h4>

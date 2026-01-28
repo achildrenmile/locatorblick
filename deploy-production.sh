@@ -25,6 +25,9 @@ for var in $REQUIRED_VARS; do
     fi
 done
 
+# Docker command (Synology uses a specific path)
+DOCKER_CMD="${DOCKER_CMD:-docker}"
+
 # Check for --rebuild flag
 REBUILD_FLAG=""
 if [ "$1" == "--rebuild" ]; then
@@ -69,18 +72,18 @@ fi
 echo -e "${GREEN}Step 2: Building Docker image on server...${NC}"
 ssh "$SERVER_HOST" "
     cd '$REMOTE_DIR'
-    docker build $REBUILD_FLAG -t '$IMAGE_NAME' .
+    sudo $DOCKER_CMD build $REBUILD_FLAG -t '$IMAGE_NAME' .
 "
 
 # Step 3: Restart container
 echo -e "${GREEN}Step 3: Restarting container...${NC}"
 ssh "$SERVER_HOST" "
     # Stop and remove existing container if it exists
-    docker stop '$CONTAINER_NAME' 2>/dev/null || true
-    docker rm '$CONTAINER_NAME' 2>/dev/null || true
+    sudo $DOCKER_CMD stop '$CONTAINER_NAME' 2>/dev/null || true
+    sudo $DOCKER_CMD rm '$CONTAINER_NAME' 2>/dev/null || true
 
     # Start new container with health check
-    docker run -d \
+    sudo $DOCKER_CMD run -d \
         --name '$CONTAINER_NAME' \
         --restart unless-stopped \
         -p '$CONTAINER_PORT' \
@@ -97,7 +100,7 @@ echo -e "${GREEN}Step 4: Verifying deployment...${NC}"
 sleep 3
 
 # Check container status
-CONTAINER_STATUS=$(ssh "$SERVER_HOST" "docker ps --filter 'name=$CONTAINER_NAME' --format '{{.Status}}'")
+CONTAINER_STATUS=$(ssh "$SERVER_HOST" "sudo $DOCKER_CMD ps --filter 'name=$CONTAINER_NAME' --format '{{.Status}}'")
 echo "Container status: $CONTAINER_STATUS"
 
 # Check if site is accessible on local port
