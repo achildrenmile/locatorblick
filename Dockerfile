@@ -24,6 +24,10 @@ RUN apk add --no-cache wget
 # Copy the built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
+# Fix file permissions for nginx
+RUN chmod -R 644 /usr/share/nginx/html/* && \
+    find /usr/share/nginx/html -type d -exec chmod 755 {} \;
+
 # Copy nginx configuration (complete nginx.conf with proxy settings)
 COPY nginx.conf /etc/nginx/nginx.conf
 RUN rm -f /etc/nginx/conf.d/default.conf
