@@ -120,6 +120,45 @@ export const de = {
     NW: 'NW',
     NNW: 'NNW',
   },
+  legal: {
+    // Footer
+    footerText: 'Locatorblick • Maidenhead Locator Tools',
+    imprint: 'Impressum',
+    privacy: 'Datenschutz',
+
+    // Impressum
+    imprintTitle: 'Impressum',
+    imprintInfo: 'Angaben gemäß § 5 ECG und § 25 MedienG',
+    imprintOperator: 'Betreiber',
+    imprintOperatorName: 'Michael Linder',
+    imprintOperatorCallsign: 'OE8YML',
+    imprintOperatorAddress: 'Nötsch 219, 9611 Nötsch',
+    imprintOperatorCountry: 'Österreich',
+    imprintContact: 'Kontakt',
+    imprintContactEmail: 'oe8yml@rednil.at',
+    imprintLiabilityTitle: 'Haftung für Inhalte',
+    imprintLiabilityText: 'Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Gewähr. Diese Website dient der Berechnung und Visualisierung von Maidenhead-Locatoren für den Amateurfunk.',
+    imprintCopyrightTitle: 'Urheberrecht',
+    imprintCopyrightText: 'Die durch den Betreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem österreichischen Urheberrecht. Der Quellcode ist unter der MIT-Lizenz auf GitHub verfügbar.',
+
+    // Datenschutz
+    privacyTitle: 'Datenschutzerklärung',
+    privacyIntro: 'Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Datenschutzerklärung informiert Sie über die Datenverarbeitung auf dieser Website.',
+    privacyNoDataTitle: 'Keine Datenerhebung',
+    privacyNoDataText: 'Diese Website ist ein reines Client-Side-Tool und erhebt, speichert oder verarbeitet keine personenbezogenen Daten. Es gibt:',
+    privacyNoDataForms: 'Keine Formulare oder Benutzereingaben die an Server gesendet werden',
+    privacyNoDataCookies: 'Keine Cookies (außer lokaler Speicherung von Favoriten)',
+    privacyNoDataTracking: 'Kein Tracking oder Analytics',
+    privacyNoDataServer: 'Keine serverseitige Datenverarbeitung',
+    privacyLocalStorageTitle: 'Lokale Speicherung',
+    privacyLocalStorageText: 'Ihre Favoriten und Einstellungen werden ausschließlich lokal in Ihrem Browser gespeichert (localStorage). Diese Daten werden nicht an Server übertragen und können jederzeit durch Löschen der Browser-Daten entfernt werden.',
+    privacyCloudflareTitle: 'Cloudflare',
+    privacyCloudflareText: 'Diese Website wird über Cloudflare bereitgestellt. Cloudflare kann technisch notwendige Verbindungsdaten verarbeiten. Weitere Informationen finden Sie in der Datenschutzerklärung von Cloudflare.',
+    privacyRightsTitle: 'Ihre Rechte',
+    privacyRightsText: 'Da wir keine personenbezogenen Daten erheben, entfallen die üblichen DSGVO-Rechte wie Auskunft, Berichtigung oder Löschung. Bei Fragen können Sie uns dennoch kontaktieren.',
+    privacyContactTitle: 'Kontakt',
+    privacyContactText: 'Bei Fragen zur Datenverarbeitung wenden Sie sich an:',
+  },
 } as const
 
 export type TranslationKey = keyof typeof de
