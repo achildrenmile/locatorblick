@@ -32,6 +32,11 @@ RUN chmod -R 644 /usr/share/nginx/html/* && \
 COPY nginx.conf /etc/nginx/nginx.conf
 RUN rm -f /etc/nginx/conf.d/default.conf
 
+# Copy and setup entrypoint script for runtime config
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 EXPOSE 80
 
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
