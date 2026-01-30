@@ -8,9 +8,10 @@ import { useLocator } from '@/hooks'
 import { useAppContext } from '@/store'
 import { formatCoordinate } from '@/utils/validation'
 import { coordinatesToLocator } from '@/utils/maidenhead'
+import type { LocatorPrecision } from '@/types'
 
 export function ConverterPanel() {
-  const { setSelectedLocation, setMapView } = useAppContext()
+  const { setSelectedLocation, setMapView, setActiveTab } = useAppContext()
   const locatorState = useLocator()
   const [latInput, setLatInput] = useState('')
   const [lonInput, setLonInput] = useState('')
@@ -48,9 +49,30 @@ export function ConverterPanel() {
       if (location) {
         setSelectedLocation(location)
         setMapView(location.coordinates, 14)
+        setActiveTab('map')
       }
     }
-  }, [locatorState, setSelectedLocation, setMapView])
+  }, [locatorState, setSelectedLocation, setMapView, setActiveTab])
+
+  const handleShowCoordsOnMap = useCallback(() => {
+    const lat = parseFloat(latInput)
+    const lon = parseFloat(lonInput)
+    if (!isNaN(lat) && !isNaN(lon)) {
+      const coords = { latitude: lat, longitude: lon }
+      const locator = coordinatesToLocator(coords, 6)
+      if (locator) {
+        setSelectedLocation({
+          id: 'coords-conversion',
+          locator,
+          coordinates: coords,
+          precision: 6 as LocatorPrecision,
+          label: 'Koordinaten-Eingabe'
+        })
+        setMapView(coords, 14)
+        setActiveTab('map')
+      }
+    }
+  }, [latInput, lonInput, setSelectedLocation, setMapView, setActiveTab])
 
   // Parse coordinates for display
   const parsedCoords = latInput && lonInput ? {
@@ -202,7 +224,7 @@ export function ConverterPanel() {
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={handleShowOnMap}
+                  onClick={handleShowCoordsOnMap}
                 >
                   {de.converter.showOnMap}
                 </Button>

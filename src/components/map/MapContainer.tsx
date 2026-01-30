@@ -27,14 +27,12 @@ function MapController() {
 }
 
 function MapClickHandler({ onLocationSelect }: { onLocationSelect?: (coords: Coordinates, locator: string) => void }) {
-  const { state } = useAppContext()
-
   useMapEvents({
     click: (e) => {
       if (onLocationSelect) {
         const coords = { latitude: e.latlng.lat, longitude: e.latlng.lng }
-        const precision = state.gridLevel === 6 ? 6 : state.gridLevel === 4 ? 4 : 6
-        const locator = coordinatesToLocator(coords, precision as LocatorPrecision)
+        // Always use 6-character precision for map clicks (subsquare level)
+        const locator = coordinatesToLocator(coords, 6 as LocatorPrecision)
         if (locator) {
           onLocationSelect(coords, locator)
         }

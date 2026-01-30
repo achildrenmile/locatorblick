@@ -10,6 +10,7 @@ interface AppState {
   showGrid: boolean
   gridLevel: 2 | 4 | 6
   defaultPrecision: LocatorPrecision
+  activeTab: string
 }
 
 type AppAction =
@@ -21,6 +22,7 @@ type AppAction =
   | { type: 'SET_SHOW_GRID'; payload: boolean }
   | { type: 'SET_GRID_LEVEL'; payload: 2 | 4 | 6 }
   | { type: 'SET_DEFAULT_PRECISION'; payload: LocatorPrecision }
+  | { type: 'SET_ACTIVE_TAB'; payload: string }
 
 const initialState: AppState = {
   currentLocation: null,
@@ -30,7 +32,8 @@ const initialState: AppState = {
   mapZoom: 6,
   showGrid: true,
   gridLevel: 4,
-  defaultPrecision: 6
+  defaultPrecision: 6,
+  activeTab: 'converter'
 }
 
 function appReducer(state: AppState, action: AppAction): AppState {
@@ -51,6 +54,8 @@ function appReducer(state: AppState, action: AppAction): AppState {
       return { ...state, gridLevel: action.payload }
     case 'SET_DEFAULT_PRECISION':
       return { ...state, defaultPrecision: action.payload }
+    case 'SET_ACTIVE_TAB':
+      return { ...state, activeTab: action.payload }
     default:
       return state
   }
@@ -65,6 +70,7 @@ interface AppContextValue {
   setMapView: (center: Coordinates, zoom?: number) => void
   toggleGrid: () => void
   setGridLevel: (level: 2 | 4 | 6) => void
+  setActiveTab: (tab: string) => void
 }
 
 const AppContext = createContext<AppContextValue | null>(null)
@@ -99,6 +105,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'SET_GRID_LEVEL', payload: level })
   }
 
+  const setActiveTab = (tab: string) => {
+    dispatch({ type: 'SET_ACTIVE_TAB', payload: tab })
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -109,7 +119,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         setCalculationResult,
         setMapView,
         toggleGrid,
-        setGridLevel
+        setGridLevel,
+        setActiveTab
       }}
     >
       {children}

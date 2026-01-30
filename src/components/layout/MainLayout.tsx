@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { Header } from './Header'
 import { MobileNav } from './MobileNav'
 import { Footer, LegalModal } from '@/components/legal'
+import { useAppContext } from '@/store'
 
 interface MainLayoutProps {
   children: (activeTab: string) => React.ReactNode
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
-  const [activeTab, setActiveTab] = useState('converter')
+  const { state, setActiveTab } = useAppContext()
+  const activeTab = state.activeTab
   const [legalModal, setLegalModal] = useState<'imprint' | 'privacy' | null>(null)
 
   return (

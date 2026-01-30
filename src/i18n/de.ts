@@ -50,6 +50,10 @@ export const de = {
     fields: 'Felder (2-stellig)',
     squares: 'Squares (4-stellig)',
     subsquares: 'Subsquares (6-stellig)',
+    addressSearch: 'Adresse suchen',
+    addressSearchPlaceholder: 'Adresse suchen...',
+    searchError: 'Adresssuche fehlgeschlagen',
+    noResults: 'Keine Ergebnisse gefunden',
   },
   favorites: {
     title: 'Favoriten',
